@@ -22,18 +22,18 @@ class my_first_test(unittest.TestCase):
             # api_key="<your api key>",  # TODO: Change me
         )
 
-    # @carbonate.test()
-    # def test_select_two_from_the_dropdown(self):
-    #     self.carbonate_sdk.load(
-    #         # 'https://carbonate.dev/test-form',
-    #         'https://testbot-website.vercel.app/demo-form',
-    #     )
-    #
-    #     self.carbonate_sdk.action('select Birthday from the event type dropdown')
-    #
-    #     self.assertTrue(
-    #         self.carbonate_sdk.assertion('the event type dropdown should be set to Birthday')
-    #     )
+    @carbonate.test()
+    def test_select_two_from_the_dropdown(self):
+        self.carbonate_sdk.load(
+            # 'https://carbonate.dev/test-form',
+            'https://testbot-website.vercel.app/demo-form',
+        )
+
+        self.carbonate_sdk.action('select Birthday from the event type dropdown')
+
+        self.assertTrue(
+            self.carbonate_sdk.assertion('the event type dropdown should be set to Birthday')
+        )
 
     @carbonate.test()
     def test_select_two_from_the_dropdown_advanced(self):
