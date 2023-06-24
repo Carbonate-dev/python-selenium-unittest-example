@@ -6,7 +6,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import Select
 
-class my_first_test(unittest.TestCase):
+class example_test(unittest.TestCase):
     def __init__(self, methodName: str = ...) -> None:
         super().__init__(methodName)
 
@@ -23,10 +23,9 @@ class my_first_test(unittest.TestCase):
         )
 
     @carbonate.test()
-    def test_select_two_from_the_dropdown(self):
+    def test_select_birthday_from_the_dropdown(self):
         self.carbonate_sdk.load(
-            # 'https://carbonate.dev/test-form',
-            'https://testbot-website.vercel.app/demo-form',
+            'https://carbonate.dev/test-form'
         )
 
         self.carbonate_sdk.action('select Birthday from the event type dropdown')
@@ -36,10 +35,9 @@ class my_first_test(unittest.TestCase):
         )
 
     @carbonate.test()
-    def test_select_two_from_the_dropdown_advanced(self):
+    def test_select_birthday_from_the_dropdown_advanced(self):
         self.carbonate_sdk.load(
-            # 'https://carbonate.dev/test-form',
-            'https://testbot-website.vercel.app/demo-form',
+            'https://carbonate.dev/test-form'
         )
 
         select = self.carbonate_sdk.lookup('the dropdown')
