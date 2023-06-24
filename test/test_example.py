@@ -7,12 +7,13 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import Select
 
 class example_test(unittest.TestCase):
-    def __init__(self, methodName: str = ...) -> None:
-        super().__init__(methodName)
+    browser = None
 
+    @classmethod
+    def setUpClass(cls) -> None:
         # This can be any browser supported by webdriver
         driver = webdriver.Chrome(service=Service(executable_path=ChromeDriverManager().install()))
-        self.browser = carbonate.WebDriver(driver)
+        cls.browser = carbonate.WebDriver(driver)
 
     def setUp(self):
         self.carbonate_sdk = carbonate.SDK(
@@ -25,7 +26,7 @@ class example_test(unittest.TestCase):
     @carbonate.test()
     def test_select_birthday_from_the_dropdown(self):
         self.carbonate_sdk.load(
-            'https://carbonate.dev/test-form'
+            'https://carbonate.dev/demo-form'
         )
 
         self.carbonate_sdk.action('select Birthday from the event type dropdown')
@@ -37,7 +38,7 @@ class example_test(unittest.TestCase):
     @carbonate.test()
     def test_select_birthday_from_the_dropdown_advanced(self):
         self.carbonate_sdk.load(
-            'https://carbonate.dev/test-form'
+            'https://carbonate.dev/demo-form'
         )
 
         select = self.carbonate_sdk.lookup('the dropdown')
