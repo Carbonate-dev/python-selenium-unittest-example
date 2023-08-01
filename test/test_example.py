@@ -5,6 +5,7 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.chrome.options import Options
 
 class example_test(unittest.TestCase):
     browser = None
@@ -12,8 +13,14 @@ class example_test(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
-        # This can be any browser supported by webdriver
-        driver = webdriver.Chrome(service=Service(executable_path=ChromeDriverManager().install()))
+        chrome_options = Options()
+        options = [
+            "--headless", # Remove if you want to see the browser as it runs tests
+        ]
+        for option in options:
+            chrome_options.add_argument(option)
+
+        driver = webdriver.Chrome(service=Service(executable_path=ChromeDriverManager().install()), options=chrome_options)
         cls.browser = carbonate_sdk.WebDriver(driver)
         cls.carbonate = carbonate_sdk.SDK(
             browser=cls.browser,
