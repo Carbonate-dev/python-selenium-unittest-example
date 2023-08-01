@@ -1,6 +1,6 @@
 async-generator==1.10
 attrs==23.1.0
-carbonate-sdk==0.1.0
+carbonate-sdk==0.0.4
 certifi==2023.5.7
 charset-normalizer==3.1.0
 exceptiongroup==1.1.1
